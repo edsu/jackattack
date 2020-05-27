@@ -1,16 +1,17 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 Generate a CSV file for Gephi.
 """
 
 import csv
+import sys
 import json
+import fileinput
 
-out = csv.writer(open("network.csv", "w"))
+out = csv.writer(sys.stdout)
 
-
-for line in open('stream.jsonl'):
+for line in fileinput.input():
     tweet = json.loads(line)
     src = tweet['user']['screen_name']
 
