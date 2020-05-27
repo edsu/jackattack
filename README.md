@@ -22,7 +22,11 @@ Then you can collect the tweets:
 
     ./collect.py > stream.jsonl
 
-After a while, or while it's running you can generate an edge list you can 
-visualize (in Gephi):
+After a while, or while it's running you can generate an edge list of replies
+that you can visualize (in Gephi):
 
-    ./network.py stream.jsonl > network.csv
+    ./replies.py stream.jsonl > replies.csv
+
+Or you can look at the retweets:
+
+    ./retweets.py stream.jsonl > retweets.csv

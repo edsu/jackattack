@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Generate a CSV file for Gephi.
+Generate an edge list of mentions.
 """
 
 import csv
