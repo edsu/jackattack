@@ -27,22 +27,29 @@ for line in fileinput.input():
     if 'retweeted_status' not in tweet:
         continue
 
+    # user names
     retweeter = tweet['user']['screen_name']
     retweeted = tweet['retweeted_status']['user']['screen_name']
 
+    # elapsed time between tweet & retweet
     time_retweet = arrow.get(tweet['created_at'], fmt)
     time_original = arrow.get(tweet['retweeted_status']['created_at'], fmt)
     rttime = time_retweet - time_original
 
-    retweeter_age = time_retweet - arrow.get(tweet['user']['created_at'], fmt)
-    retweeted_age = time_original - arrow.get(tweet['retweeted_status']['user']['created_at'], fmt)
+    # elapsed time between the retweet and the retweeter's account creation
+    retweeter_created = arrow.get(tweet['user']['created_at'], fmt)
+    retweeter_age = time_retweet - retweeter_created
+
+    # elapsed time between the original tweet and their account creation
+    retweeted_created = arrow.get(tweet['retweeted_status']['user']['created_at'], fmt)
+    retweeted_age = time_original - retweeted_created
 
     out.writerow([
         retweeter,
         retweeted,
-        rttime.seconds,
-        retweeter_age.seconds,
-        retweeted_age.seconds
+        rttime.total_seconds(),
+        retweeter_age.days,
+        retweeted_age.days
     ])
 
 
