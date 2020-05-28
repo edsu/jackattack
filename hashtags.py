@@ -17,6 +17,6 @@ for line in fileinput.input():
     except:
         continue
     user = tweet['user']['screen_name']
-    hashtags = [ht['text'] for ht in tweet['entities']['hashtags']]
+    hashtags = [ht['text'].lower() for ht in tweet['entities']['hashtags']]
     if len(hashtags) > 0:
         out.writerow([user, ' '.join(hashtags)])
