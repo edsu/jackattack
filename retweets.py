@@ -7,21 +7,22 @@ Generate an edge list for retweets.
 import csv
 import sys
 import json
+import arrow
 import fileinput
 
 out = csv.writer(sys.stdout)
 
 for line in fileinput.input():
-    tweet = json.loads(line)
+    try:
+        tweet = json.loads(line)
+    except:
+        continue
     if 'retweeted_status' in tweet:
+        created = arrow.get(tweet['created_at'], "MMM DD HH:mm:ss +0000 YYYY")
         src = tweet['user']['screen_name']
         dst = tweet['retweeted_status']['user']['screen_name']
-        out.writerow([src,dst])
-
-
-
-
-    
-
-
-
+        out.writerow([
+            created.strftime('%Y-%m-%d %H:%M:%S'),
+            src,
+            dst
+        ])
