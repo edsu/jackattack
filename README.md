@@ -5,8 +5,10 @@ Trump's tweets.
 
 * collect.py - collects tweets that mention @jack or @yoyoel from the filter stream
 * ids.txt - a list of tweet ids collected so far
-* network.py - generate a edge list suitable for Gephi
-* network.csv - output of network.py 
+* hashtags.py - generate a CSV of users and hashtags
+* mentions.py - generate a list of users and who they are mentioning
+* retweets.py - retweet network (with timestamp for partitioning)
+
 
 ## Run
 
@@ -25,7 +27,7 @@ Then you can collect the tweets:
 After a while, or while it's running you can generate an edge list of replies
 that you can visualize (in Gephi):
 
-    ./replies.py stream.jsonl > replies.csv
+    ./mentions.py stream.jsonl > mentions.csv
 
 Or you can look at the retweets:
 
