@@ -12,6 +12,9 @@ users = ['jack', 'yoyoel']
 
 for tweet in twitter.filter(','.join(users)):
 
+    if 'id_str' not in tweet:
+        continue
+
     # if it's > 140 chars look for the users in the extended_tweet 
     if 'extended_tweet' in tweet:
         user_mentions = tweet['extended_tweet']['entities']['user_mentions']
