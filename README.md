@@ -8,7 +8,7 @@ Trump's tweets.
 * hashtags.py - generate a CSV of users and hashtags
 * mentions.py - generate a list of users and who they are mentioning
 * retweets.py - retweet network (with timestamp for partitioning)
-
+* segment.py - segment a csv into time buckets
 
 ## Run
 

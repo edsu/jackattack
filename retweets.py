@@ -11,6 +11,7 @@ import arrow
 import fileinput
 
 out = csv.writer(sys.stdout)
+out.writerow(['created', 'retweeter', 'retweeted'])
 
 for line in fileinput.input():
     try:
